@@ -24,7 +24,7 @@ import com.solacesystems.jms.SolJmsUtility;
 public class JmsConsumerConfiguration {
     private static final Logger logger = LoggerFactory.getLogger(JmsConsumerConfiguration.class);
 
-    @Value("solace.jms.host")
+    @Value("${solace.jms.host}")
     String Host;
 
     @Bean
