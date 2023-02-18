@@ -15,20 +15,20 @@ services:
     # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
     # network_mode: service:messaging
     
-  messaging:
-    container_name: solace
-    image: solace/solace-pubsub-standard:latest
-    restart: unless-stopped
-    ports:
-      - "8080:8080"
-      - "55555:55555"
-      - "8008:8008"
-      - "1883:1883"
-      - "8000:8000"
-      - "5672:5672"
-      - "9000:9000"
-      - "2222:2222"
-    shm_size: '2gb'
-    environment:
-      username_admin_globalaccesslevel: admin 
-      username_admin_password: admin
+  # messaging:
+  #   container_name: solace
+  #   image: solace/solace-pubsub-standard:latest
+  #   restart: unless-stopped
+    # ports:
+    #   - "8080:8080"
+    #   - "55555:55555"
+    #   - "8008:8008"
+    #   - "1883:1883"
+    #   - "8000:8000"
+    #   - "5672:5672"
+    #   - "9000:9000"
+    #   - "2222:2222"
+    # environment:
+    #   username_admin_globalaccesslevel: admin 
+    #   username_admin_password: admin
+    # shm_size: '2gb'

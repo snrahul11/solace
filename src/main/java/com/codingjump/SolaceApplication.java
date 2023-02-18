@@ -1,4 +1,4 @@
-package com.codingjump.solace;
+package com.codingjump;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

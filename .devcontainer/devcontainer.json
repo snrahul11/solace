@@ -8,13 +8,14 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "ms-azuretools.vscode-docker",
-        "esbenp.prettier-vscode",
-        "redhat.vscode-xml",
-        "vscjava.vscode-java-pack",
-        "redhat.fabric8-analytics",
-        "vmware.vscode-spring-boot"
-      ]
+		"ms-azuretools.vscode-docker",
+		"esbenp.prettier-vscode",
+		"redhat.vscode-xml",
+		"vscjava.vscode-java-pack",
+		"redhat.fabric8-analytics",
+		"vmware.vscode-spring-boot",
+		"humao.rest-client"
+	]
     }
   },
 
