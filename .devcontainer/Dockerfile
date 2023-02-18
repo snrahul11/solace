@@ -16,8 +16,13 @@ RUN apt-get install -y zip unzip curl
 # Downloading SDKMAN! 
 RUN curl -s "https://get.sdkman.io" | bash
 
+# java & maven
 RUN bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && \
     yes | sdk install java $JAVA_VERSION && \
     yes | sdk install maven $MAVEN_VERSION && \
     rm -rf $HOME/.sdkman/archives/* && \
     rm -rf $HOME/.sdkman/tmp/*"
+
+# nodejs
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash
+RUN apt-get install -y nodejs
