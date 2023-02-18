@@ -13,9 +13,9 @@ services:
     command: sleep infinity
 
     # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
-    # network_mode: service:msg
+    network_mode: service:db
     
-  msg:
+  db:
     container_name: solace
     image: solace/solace-pubsub-standard:latest
     restart: unless-stopped
