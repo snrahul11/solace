@@ -14,7 +14,8 @@
 		"vscjava.vscode-java-pack",
 		"redhat.fabric8-analytics",
 		"vmware.vscode-spring-boot",
-		"humao.rest-client"
+		"humao.rest-client",
+		"vscjava.vscode-lombok"
 	]
     }
   },
