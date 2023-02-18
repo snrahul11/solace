@@ -28,7 +28,7 @@ services:
       - "5672:5672"
       - "9000:9000"
       - "2222:2222"
-    shm_size: '2gb'
     environment:
       username_admin_globalaccesslevel: admin 
       username_admin_password: admin
+    # shm_size: '2gb'
