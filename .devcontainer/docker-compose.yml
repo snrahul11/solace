@@ -20,14 +20,14 @@ services:
     image: solace/solace-pubsub-standard:latest
     restart: unless-stopped
     ports:
-      - "8080:8080"
-      - "55555:55555"
-      - "8008:8008"
-      - "1883:1883"
-      - "8000:8000"
-      - "5672:5672"
-      - "9000:9000"
-      - "2222:2222"
+      - "8090:8080"
+      - "8091:55555"
+      - "8092:8008"
+      - "8093:1883"
+      - "8094:8000"
+      - "8095:5672"
+      - "8096:9000"
+      - "8097:2222"
     environment:
       username_admin_globalaccesslevel: admin 
       username_admin_password: admin

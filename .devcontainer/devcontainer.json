@@ -1,22 +1,22 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/java-postgres
 {
-  "name": "Java & PostgreSQL",
+  "name": "Solace Java",
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "customizations": {
     "vscode": {
       "extensions": [
-		"ms-azuretools.vscode-docker",
-		"esbenp.prettier-vscode",
-		"redhat.vscode-xml",
-		"vscjava.vscode-java-pack",
-		"redhat.fabric8-analytics",
-		"vmware.vscode-spring-boot",
-		"humao.rest-client",
-		"vscjava.vscode-lombok"
-	]
+        "ms-azuretools.vscode-docker",
+        "esbenp.prettier-vscode",
+        "redhat.vscode-xml",
+        "vscjava.vscode-java-pack",
+        "redhat.fabric8-analytics",
+        "vmware.vscode-spring-boot",
+        "humao.rest-client",
+        "vscjava.vscode-lombok"
+      ]
     }
   },
 
@@ -25,7 +25,7 @@
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // This can be used to network with other containers or with the host.
-  "forwardPorts": [8080]
+  "forwardPorts": [8090]
 
   // Use 'postCreateCommand' to run commands after the container is created.
   // "postCreateCommand": "java -version",

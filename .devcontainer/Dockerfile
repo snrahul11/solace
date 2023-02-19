@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 mcr.microsoft.com/vscode/devcontainers/base:ubuntu-20.04 
+FROM ubuntu:20.04
 ENV DEBIAN_FRONTEND=noninteractive 
 
 ARG JAVA_VERSION="17.0.6-ms"
