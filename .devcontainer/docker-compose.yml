@@ -11,24 +11,5 @@ services:
       
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
-
-    # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
-    network_mode: service:db
-    
-  db:
-    container_name: solace
-    image: solace/solace-pubsub-standard:latest
-    restart: unless-stopped
-    ports:
-      - "8090:8080"
-      - "8091:55555"
-      - "8092:8008"
-      - "8093:1883"
-      - "8094:8000"
-      - "8095:5672"
-      - "8096:9000"
-      - "8097:2222"
-    environment:
-      username_admin_globalaccesslevel: admin 
-      username_admin_password: admin
-    # shm_size: '2gb'
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
