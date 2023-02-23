@@ -28,7 +28,7 @@ public class Writer {
 
 	private String queueName = "SpringTestQueue";
 
-	@Scheduled(fixedRate = 5000)
+	@Scheduled(fixedRate = 10000)
 	public void sendEvent() throws Exception {
 		String msg = "Hello World " + System.currentTimeMillis();
 		System.out.println("==========SENDING MESSAGE========== " + msg);
