@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND=noninteractive 
 
 ARG JAVA_VERSION="17.0.6-ms"
@@ -8,9 +8,7 @@ RUN apt-get update -y
 
 # git 
 RUN apt-get install -y git git-lfs
-RUN git config --global credential.helper store && \
-    git config --global user.name "Rahul Suresh Neelakantan" && \
-    git config --global user.email "snrahul11@gmail.com"
+RUN git config --global credential.helper store
 
 # zip unzip curl
 RUN apt-get install -y zip unzip curl
