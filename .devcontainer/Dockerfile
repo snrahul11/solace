@@ -8,7 +8,9 @@ RUN apt-get update -y
 
 # git 
 RUN apt-get install -y git git-lfs
-RUN git config --global credential.helper store 
+RUN git config --global credential.helper store && \
+    git config --global user.name "Rahul Suresh Neelakantan" && \
+    git config --global user.email "snrahul11@gmail.com"
 
 # zip unzip curl
 RUN apt-get install -y zip unzip curl
@@ -26,3 +28,6 @@ RUN bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && \
 # nodejs
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash
 RUN apt-get install -y nodejs
+
+# az cli
+RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
