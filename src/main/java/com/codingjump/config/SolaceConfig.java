@@ -2,48 +2,58 @@ package com.codingjump.config;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
 
 import javax.jms.ConnectionFactory;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
+import org.springframework.jms.connection.CachingConnectionFactory;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ErrorHandler;
 
 import com.solacesystems.jms.SolConnectionFactory;
 import com.solacesystems.jms.SolJmsUtility;
 
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @EnableJms
 @Configuration
-public class JmsConsumerConfiguration {
-    private static final Logger logger = LoggerFactory.getLogger(JmsConsumerConfiguration.class);
-
+public class SolaceConfig {
     @Value("${solace.jms.host}")
-    String Host;
+    String host;
 
+    @Value("${solace.jms.msgVpn}")
+    private String vpn;
+
+    @Value("${solace.jms.clientUserName}")
+    private String userName;
+
+    @Value("${solace.jms.clientPassword}")
+    private String password;
+
+    @SneakyThrows
     @Bean
     ConnectionFactory getConnectionFactory() {
-        try {
-            SolConnectionFactory cf = SolJmsUtility.createConnectionFactory();
-            cf.setHost(Host);
-            cf.setUsername("admin");
-            cf.setPassword("admin");
-            cf.setDirectTransport(false);
-            cf.setVPN("default");
-            return cf;
-        } catch (Exception e) {
-            return null;
-        }
+        SolConnectionFactory cf = SolJmsUtility.createConnectionFactory();
+        cf.setHost(host);
+        cf.setUsername(userName);
+        cf.setPassword(password);
+        cf.setVPN(vpn);
+        return cf;
     }
 
-    // Example configuration of the ConnectionFactory: we instantiate it here
-    // ourselves and set an error handler
+    @Bean
+    public JmsTemplate jmsTemplate(ConnectionFactory connectionFactory) {
+        CachingConnectionFactory ccf = new CachingConnectionFactory(connectionFactory);
+        return new JmsTemplate(ccf);
+    }
+
     @Bean
     public DefaultJmsListenerContainerFactory cFactory(ConnectionFactory connectionFactory,
             DemoErrorHandler errorHandler) {
@@ -55,18 +65,13 @@ public class JmsConsumerConfiguration {
 
     @Service
     public class DemoErrorHandler implements ErrorHandler {
-
+        @SneakyThrows
         public void handleError(Throwable t) {
-            ByteArrayOutputStream os = new ByteArrayOutputStream();
-            PrintStream ps = new PrintStream(os);
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            PrintStream ps = new PrintStream(byteArrayOutputStream);
             t.printStackTrace(ps);
-            try {
-                String output = os.toString("UTF8");
-                logger.error("============= Error processing message: " + t.getMessage() + "\n" + output);
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-
+            log.error("Error processing message: {}\nStack trace:\n{}", t.getMessage(),
+                    byteArrayOutputStream.toString("UTF8"));
         }
     }
 }

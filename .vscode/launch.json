@@ -1,0 +1,12 @@
+{
+    "confirgurations": [
+        {
+            "type": "java",
+            "name": "Spring Application",
+            "request": "launch",
+            "mainClass": "com.codingjump.Application",
+            "vmArgs": "",
+            "env": {}
+        }
+    ]
+}
