@@ -45,13 +45,16 @@ public class SolaceConfig {
         cf.setUsername(userName);
         cf.setPassword(password);
         cf.setVPN(vpn);
+        cf.setDirectTransport(false);
         return cf;
     }
 
     @Bean
     public JmsTemplate jmsTemplate(ConnectionFactory connectionFactory) {
         CachingConnectionFactory ccf = new CachingConnectionFactory(connectionFactory);
-        return new JmsTemplate(ccf);
+        JmsTemplate jmsTemplate = new JmsTemplate(ccf);
+        jmsTemplate.setPubSubDomain(false);
+        return jmsTemplate;
     }
 
     @Bean
