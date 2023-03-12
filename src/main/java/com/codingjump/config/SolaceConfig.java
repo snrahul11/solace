@@ -31,7 +31,7 @@ public class SolaceConfig {
     @Value("${solace.jms.msgVpn}")
     private String vpn;
 
-    @Value("${solace.jms.clientUserName}")
+    @Value("${solace.jms.clientUsername}")
     private String userName;
 
     @Value("${solace.jms.clientPassword}")

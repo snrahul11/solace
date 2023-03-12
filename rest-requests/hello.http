@@ -1,6 +1,0 @@
-GET http://app:8081/hello HTTP/1.1
-
-### 
-GET http://app:8081/connection HTTP/1.1
-
-###
