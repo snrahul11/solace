@@ -1,12 +1,11 @@
 {
-    "confirgurations": [
+    "configurations": [
         {
             "type": "java",
-            "name": "Spring Application",
+            "name": "Application",
             "request": "launch",
             "mainClass": "com.codingjump.Application",
-            "vmArgs": "",
-            "env": {}
+            "projectName": "solace"
         }
     ]
 }

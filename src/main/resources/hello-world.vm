@@ -1,0 +1,4 @@
+#foreach( $n in $names )
+Hello $n !!! <br/>
+#end
+Total: ${names.size()}
