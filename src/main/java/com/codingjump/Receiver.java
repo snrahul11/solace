@@ -15,5 +15,6 @@ public class Receiver {
     @JmsListener(destination = "test")
     public void handle(TextMessage message) {
         log.info("Receiving Message: {}", message.getText());
+        message.acknowledge();
     }
 }

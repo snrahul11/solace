@@ -17,6 +17,7 @@ import org.springframework.util.ErrorHandler;
 
 import com.solacesystems.jms.SolConnectionFactory;
 import com.solacesystems.jms.SolJmsUtility;
+import com.solacesystems.jms.SupportedProperty;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -57,12 +58,14 @@ public class SolaceConfig {
         return jmsTemplate;
     }
 
-    @Bean
-    public DefaultJmsListenerContainerFactory cFactory(ConnectionFactory connectionFactory,
+    @Bean("jmsListenerContainerFactory")
+    public DefaultJmsListenerContainerFactory getDefaultJmsListenerContainerFactory(ConnectionFactory connectionFactory,
             DemoErrorHandler errorHandler) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory);
+        factory.setAutoStartup(false);
         factory.setErrorHandler(errorHandler);
+        factory.setSessionAcknowledgeMode(SupportedProperty.SOL_CLIENT_ACKNOWLEDGE);
         return factory;
     }
 
